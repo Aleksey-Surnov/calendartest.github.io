@@ -22,4 +22,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
 		tg.MainButton.setText("Дата не выбрана");
 		tg.MainButton.show();
 	} 
-	else {tg.sendData(result.val);}})
+	else {tg.MainButton.show();
+	      result.val = document.getElementById("calendar").value;
+	      tg.sendData(result.val);}})
