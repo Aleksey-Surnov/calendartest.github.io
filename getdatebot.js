@@ -8,7 +8,8 @@ tg.MainButton.color = "#2cab37";
 
 let result = {val:""};
 var votedata = document.getElementById("buttonvote");
-
+tg.MainButton.setText("Выбрать");
+tg.MainButton.show();
 
 votedata.addEventListener('click', function(){
 	result.val = document.getElementById("calendar").value;
@@ -16,6 +17,9 @@ votedata.addEventListener('click', function(){
 	tg.MainButton.show();})
 console.log(result.val);
 
-
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData(result.val);})
+	if (document.getElementById("calendar").value=== "") {
+		tg.MainButton.setText("Дата не выбрана");
+		tg.MainButton.show();
+	} 
+	else {tg.sendData(result.val);}})
