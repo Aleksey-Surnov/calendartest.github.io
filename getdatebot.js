@@ -11,14 +11,9 @@ let result = {val:""};
 tg.MainButton.setText("Выбрать");
 tg.MainButton.show();
 
+let dataandtime = [{'dt':'05-01-2023', 'iswork':'1'}, {'dt':'08-01-2023', 'iswork':'1'}]
 
-async function load() {
-	let url = 'https://docs.google.com/spreadsheets/d/1MzFq4ysE8EjP_jHyW0F7hJaczh7kEJ9HIC6_DE2wixI/gviz/tq?tqx=out:json&tq&gid=0';
-        let obj = await (await fetch(url)).json();
-        console.log(obj);
-	return obj;}
 
-let data_j = load();
 
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
@@ -26,7 +21,13 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
 		tg.MainButton.setText("Дата не выбрана");
 		tg.MainButton.show();
 	} 
-	else {tg.MainButton.show();
-	      result.val = document.getElementById("calendar").value;
-	      tg.sendData(result.val);
-	      tg.sendData(data_j);}})
+	else {
+		for(let i = 0; i < dataandtime.length; i++) {
+			let obj = dataandtime[i];
+			if (obj.dt === document.getElementById("calendar").value) {
+				tg.MainButton.setText("Дата занята");
+				break;}
+			else {
+				tg.MainButton.show();
+				result.val = document.getElementById("calendar").value;
+				tg.sendData(result.val);}}}})
