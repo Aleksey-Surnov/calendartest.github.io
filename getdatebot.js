@@ -21,13 +21,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
 		tg.MainButton.setText("Дата не выбрана");
 		tg.MainButton.show();
 	} 
-	else {
-		for(let i = 0; i < dataandtime.length; i++) {
-			let obj = dataandtime[i];
-			if (obj.dt === document.getElementById("calendar").value) {
-				tg.MainButton.setText("Дата занята");
-				break;}
-			else {
-				tg.MainButton.show();
-				result.val = document.getElementById("calendar").value;
-				tg.sendData(result.val);}}}})
+	else {tg.MainButton.show();
+	      result.val = document.getElementById("calendar").value;
+	      tg.sendData(result.val);}})
