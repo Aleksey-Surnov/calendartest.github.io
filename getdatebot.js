@@ -11,10 +11,6 @@ let result = {val:""};
 tg.MainButton.setText("Выбрать");
 tg.MainButton.show();
 
-let dataandtime = [{'dt':'05-01-2023', 'iswork':'1'}, {'dt':'08-01-2023', 'iswork':'1'}]
-
-
-
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
 	if (document.getElementById("calendar").value=== "") {
